@@ -6,11 +6,17 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return (MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: true,
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios),
+            onPressed: () {
+              Navigator.pop(context, false);
+            },
+          ),
           title: Text(
             title,
             textAlign: TextAlign.center,
@@ -167,7 +173,7 @@ class Signup extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (BuildContext context) => Loginpage()),
+                            builder: (BuildContext context) => MyloginPage()),
                       );
                     },
                   ),
