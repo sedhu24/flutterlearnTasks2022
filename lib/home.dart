@@ -12,7 +12,7 @@ class Homepage extends StatefulWidget {
 
 class HomepageState extends State<Homepage> {
   late SharedPreferences logindata;
-  late String? userName;
+  late String userName;
 
   int selectedindex = 0;
   final List screens = [
@@ -36,7 +36,7 @@ class HomepageState extends State<Homepage> {
   void initial() async {
     logindata = await SharedPreferences.getInstance();
     setState(() {
-      userName = logindata.getString('username');
+      userName = logindata.getString('username')!;
       print(userName);
     });
   }

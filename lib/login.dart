@@ -13,6 +13,7 @@ class MyloginPage extends StatefulWidget {
 class _MyloginPagestate extends State<MyloginPage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+
   late SharedPreferences logindata;
   late bool newUser;
   late bool isObsecure = true;
@@ -109,6 +110,7 @@ class _MyloginPagestate extends State<MyloginPage> {
                 margin: EdgeInsets.only(top: 10),
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: usernameController,
                   decoration: InputDecoration(
                       labelText: 'Email',
                       labelStyle: TextStyle(color: Colors.black45),
@@ -125,6 +127,7 @@ class _MyloginPagestate extends State<MyloginPage> {
                 margin: EdgeInsets.only(top: 10),
                 padding: EdgeInsets.all(10),
                 child: TextField(
+                  controller: passwordController,
                   keyboardType: TextInputType.visiblePassword,
                   obscureText: isObsecure,
                   obscuringCharacter: '*',
@@ -196,18 +199,21 @@ class _MyloginPagestate extends State<MyloginPage> {
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: TextButton(
                   onPressed: () {
-                    print('object');
+                    print('Login Click');
                     String userName = usernameController.text;
                     String password = passwordController.text;
-                    if (userName == '' && password == '') {
+                    if (userName != '' && password != '') {
+                      print("Successfull");
                       print(userName);
-                      logindata.setBool('login', true);
+                      logindata.setBool('login', false);
                       logindata.setString('username', userName);
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                             builder: (BuildContext context) => Homepage()),
                       );
+                    } else {
+                      print("Failure");
                     }
                   },
                   child: Text(
