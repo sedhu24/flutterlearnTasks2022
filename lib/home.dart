@@ -37,7 +37,7 @@ class HomepageState extends State<Homepage> {
     logindata = await SharedPreferences.getInstance();
     setState(() {
       userName = logindata.getString('username')!;
-      print(userName);
+      print("username " + " = " + userName);
     });
   }
 

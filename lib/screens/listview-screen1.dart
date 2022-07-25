@@ -73,48 +73,33 @@ class listviewpage extends State<Listviewpage> {
                 itemCount: postModel!.length,
                 itemBuilder: (context, index) {
                   return Card(
-                    margin: EdgeInsets.all(5),
-                    child: Column(
-                      children: <Widget>[
-                        Text(
-                          postModel![index].title,
-                          textAlign: TextAlign.left,
+                      color: Colors.deepOrangeAccent,
+                      margin: EdgeInsets.all(5),
+                      child: Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            Container(
+                              alignment: Alignment.center,
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      width: 1.0, color: Colors.white),
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10))),
+                              child: Text(postModel![index].id.toString()),
+                            ),
+                            Container(
+                              alignment: Alignment.topLeft,
+                              height: 50,
+                              width: 250,
+                              child: Text(postModel![index].title),
+                            ),
+                          ],
                         ),
-
-                        // Flexible(
-                        //     flex: 1,
-                        //     fit: FlexFit.tight,
-                        //     child: Container(
-                        //       child: Text(postModel![index].title),
-                        //       height: 20,
-                        //       decoration: BoxDecoration(
-                        //         borderRadius: BorderRadius.circular(10),
-                        //         color: Colors.black12,
-                        //       ),
-                        //     )),
-
-                        // Flexible(child: Text(postModel![index].title)),
-
-                        //
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        //   children: [
-                        //     Text(postModel![index].id.toString()),
-                        //     Text(
-                        //       postModel![index].title,
-                        //     ),
-                        //   ],
-                        // ),
-
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        //   children: [
-                        //     Text(postModel![index].body),
-                        //   ],
-                        // )
-                      ],
-                    ),
-                  );
+                      ));
                 })
         // FutureBuilder<List<PostModel>>(
         //     future: Future.error(Object),
