@@ -1,27 +1,31 @@
 import 'package:dio/dio.dart';
+import 'package:flutterlearn/https/response/data.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutterlearn/constants.dart';
-import 'package:flutterlearn/https/response/users.dart';
+import 'package:flutterlearn/https/response/user.dart';
 
 class UserRepository {
-  static Future<List<UserModel>?> getUsers() async {
-    Response response =
-        await Dio().get(Apiconstants.baseUrl + Apiconstants.usersEndpoint);
+  static Future<UserModel?> getUser({required String id}) async {
+    UserModel? user;
 
-    if (response.statusCode == 200) {
-      var getUserData = response.data as List;
-      var listUser = getUserData.map((i) => UserModel.fromJson(i)).toList();
-      return listUser;
-    } else {
-      print('Response Error');
+    try {
+      print('Api');
+      Response userData =
+          await Dio().get('https://jsonplaceholder.typicode.com/users/$id');
+      print('User Info  :  ${userData.data}');
+      user = UserModel.fromJson(userData.data);
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print('Dio error!');
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
+      }
     }
 
-    // var url = Uri.parse(Apiconstants.baseUrl + Apiconstants.usersEndpoint);
-    // var response = await http.get(url);
-    //
-    // if (response.statusCode == 200) {
-    //   List<UserModel> model = userModelFromJson(response.body);
-    //   return model;
-    // }
+    return user;
   }
 }

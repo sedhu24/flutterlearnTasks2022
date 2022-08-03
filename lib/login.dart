@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterlearn/home.dart';
-import 'package:flutterlearn/https/repositories/post_repository.dart';
 import 'package:flutterlearn/signup.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -23,14 +22,16 @@ class _MyloginPagestate extends State<MyloginPage> {
   @override
   void initState() {
     super.initState();
-    // getPost();
+
     checkifalreadylogin();
   }
 
-  // getPost() async {
-  //   response = await PostRepository.getPost();
-
-  //   // print(response);
+  // getPostModel() async {
+  //   developer.log('getUserModel');
+  //   // PostRepository postRepository = PostRepository();
+  //   postModel = (await PostRepository.getPost());
+  //   developer.log('getUserModel');
+  //   // print(response?.data[0]);
   // }
 
   void checkifalreadylogin() async {
