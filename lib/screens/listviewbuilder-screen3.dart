@@ -23,10 +23,10 @@ class listviewbuilderpage extends State<Listviewbuilder> {
   Widget build(BuildContext context) {
     return ListView.builder(
         padding: EdgeInsets.all(15.0),
-        itemBuilder: /*1*/ (context, i) {
+        itemBuilder: (context, i) {
           if (i.isOdd) return Divider();
 
-          final index = i ~/ 2;
+          final index = i;
 
           if (index >= suggestion.length) {
             suggestion.addAll(generateWordPairs().take(10));

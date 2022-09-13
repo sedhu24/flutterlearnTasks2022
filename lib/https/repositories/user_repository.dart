@@ -9,9 +9,9 @@ class UserRepository {
     UserModel? user;
 
     try {
-      print('Api');
-      Response userData =
-          await Dio().get('https://jsonplaceholder.typicode.com/users/$id');
+      // print('Api');
+      Response userData = await Dio()
+          .get(Apiconstants.baseUrl + Apiconstants.usersEndpoint + '$id');
       print('User Info  :  ${userData.data}');
       user = UserModel.fromJson(userData.data);
     } on DioError catch (e) {

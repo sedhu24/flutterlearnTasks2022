@@ -17,6 +17,7 @@ class Screentwo extends StatefulWidget {
 
 class _ScreenTwo extends State<Screentwo> {
   Response? response;
+
   late List<UserModel>? usermodel = [];
   @override
   void initState() {

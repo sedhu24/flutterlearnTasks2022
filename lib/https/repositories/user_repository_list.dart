@@ -8,11 +8,6 @@ import 'package:flutterlearn/https/response/user.dart';
 
 class UserRepositoryList {
   static Future<List<UserModel>?> lisUser() async {
-    UserModel? userList;
-    // int id = 1;
-    // String url = "www.google.com/user/${id}/update";
-    // String url1 = "www.google.com/user/update?user_id";
-
     try {
       print('APi : List');
 
@@ -22,6 +17,7 @@ class UserRepositoryList {
 
       if (response.statusCode == 200) {
         List<UserModel> userlist = userModelFromJson(response.body);
+        print(userlist);
 
         return userlist;
       }
@@ -48,11 +44,8 @@ class UserRepositoryList {
       // userList = UserModel.fromJson(userListData.data as Map<String, dynamic>);
       // print('Userlist name : ${userList.firstName}');
     } catch (e) {
-      log.toString();
-      // print('STATUS: ${e.response?.statusCode}');
-      // print('DATA: ${e.response?.data}');
-      // print('HEADERS: ${e.response?.headers}');
-      // print(e);
+      // log.toString();
+      print(e);
     }
   }
 }
